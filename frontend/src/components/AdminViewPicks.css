@@ -1,0 +1,147 @@
+/* General table styles */
+.ant-table-thead > tr > th {
+    background-color: #333;
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+  }
+  
+  .ant-table-tbody > tr > td {
+    background-color: #2c2c2c;
+    border-bottom: 1px solid #444;
+    color: #d0d0d0;
+  }
+  
+  .ant-table-tbody > tr:hover > td {
+    background-color: #3a3a3a;
+  }
+  
+  .ant-table-bordered .ant-table-cell {
+    border-color: #444;
+  }
+  
+  .ant-table-summary {
+    background-color: #2c2c2c;
+    border-top: 1px solid #444;
+    color: #ffffff;
+  }
+  
+  /* Pagination */
+  .ant-pagination-item {
+    background-color: #333;
+    border-color: #444;
+    color: #e6e6e6;
+  }
+  
+  .ant-pagination-item-active {
+    background-color: #0A84FF;
+    border-color: #0A84FF;
+    color: white;
+  }
+  
+  .ant-pagination-item:hover {
+    border-color: #0A84FF;
+    color: white;
+  }
+  
+  /* Scrollbar for horizontal scrolling */
+  .ant-table-scroll .ant-table-body::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .ant-table-scroll .ant-table-body::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  }
+  
+  .ant-table-scroll .ant-table-body::-webkit-scrollbar-track {
+    background-color: #2c2c2c;
+  }
+  
+  /* General table background and text */
+  .table {
+    background: #2c2c2c !important;
+    color: #e6e6e6;
+    border-color: #444;
+  }
+  
+  /* Responsive styling */
+  
+  /* On small screens (phones) */
+  @media screen and (max-width: 768px) {
+    /* Reduce font size and padding in the table */
+    .ant-table-cell {
+      padding: 8px; /* Reduce padding */
+      font-size: 14px; /* Smaller font for better readability */
+    }
+  
+    .ant-table-thead > tr > th {
+      font-size: 14px; /* Adjust header font size */
+    }
+  
+    /* Make the table horizontally scrollable */
+    .ant-table-wrapper {
+      overflow-x: auto;
+    }
+  
+    .ant-table {
+      width: 100%;
+      display: block;
+    }
+  
+    /* Adjust pagination buttons for small screens */
+    .ant-pagination-item {
+      padding: 0 6px; /* Smaller padding for pagination */
+      font-size: 12px;
+    }
+  
+    .ant-pagination-item-active {
+      padding: 0 6px;
+    }
+  
+    .ant-pagination-options {
+      display: none; /* Hide pagination options on small screens */
+    }
+  
+    /* Ensure buttons and space elements are responsive */
+    .ant-space {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    /* Make sure text inside the table wraps nicely */
+    .ant-table-cell {
+      white-space: nowrap; /* Prevent text from overflowing */
+      text-overflow: ellipsis;
+      overflow: hidden; /* Hide overflow content */
+    }
+  }
+  
+  /* On very small screens (phones, less than 480px) */
+  @media screen and (max-width: 480px) {
+    /* Further reduce padding and font sizes */
+    .ant-table-cell {
+      padding: 6px;
+      font-size: 12px;
+    }
+  
+    .ant-table-thead > tr > th {
+      font-size: 12px;
+    }
+  
+    /* Center the table and allow scrolling */
+    .ant-table-wrapper {
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+  
+    /* Center pagination controls */
+    .ant-pagination {
+      text-align: center;
+    }
+  
+    /* Make the login form fully responsive */
+    .admin-login-container {
+      padding: 20px;
+    }
+  }
+  

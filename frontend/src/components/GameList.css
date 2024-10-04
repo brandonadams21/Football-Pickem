@@ -1,0 +1,73 @@
+.game-list-container {
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background */
+  }
+  
+  .game-cards-container {
+    margin-top: 20px;
+  }
+  
+  .game-card {
+    background: #2e2e2e; /* Dark card background */
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #444; /* Subtle border for dark mode */
+  }
+  
+  .game-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .team-box {
+    flex: 1;
+    background-color: #3a3a3a; /* Dark background for team box */
+    border: 2px solid #555; /* Dark border */
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0 10px;
+    position: relative;
+    transition: all 0.3s;
+    color: #ffffff; /* White text color */
+  }
+  
+  .team-box:hover {
+    border-color: #0A84FF; /* Blue hover border for contrast */
+  }
+  
+  .team-box.selected {
+    border-color: #0A84FF;
+    background-color: #0A84FF22; /* Light blue background for selection */
+  }
+  
+  .team-box.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .team-card {
+    text-align: center;
+  }
+  
+  .team-logo {
+    width: 60px;
+    height: auto;
+  }
+  
+  .team-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff; /* White score text */
+  }
+  
+  .spread-info {
+    text-align: center;
+    flex: 0.5;
+    background-color: #3a3a3a; /* Dark background for spread info */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #ffffff; /* White text for spread info */
+  }
+  

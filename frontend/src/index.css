@@ -1,0 +1,191 @@
+/* Global body styles */
+html, body {
+  background-color: #1e1e1e !important;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container styles */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+/* Header and navigation */
+h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button.active {
+  background-color: #0A84FF;
+  color: #fff;
+}
+
+.button-group button:hover {
+  background-color: #555;
+}
+
+/* Card Styles */
+.game-card {
+  background-color: #2e2e2e;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #444;
+  margin-bottom: 20px;
+}
+
+.game-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-box {
+  background-color: #3a3a3a;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  width: 48%;
+  text-align: center;
+}
+
+.team-box:hover {
+  background-color: #555;
+}
+
+.team-box.selected {
+  border: 2px solid #0A84FF;
+}
+
+.team-card img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  color: #ffffff;
+}
+
+.team-score {
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Spread Info */
+.spread-info {
+  background-color: #3a3a3a;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+  min-width: 150px;
+}
+
+.spread-info p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Disabled Cards for Final Games */
+.team-box.disabled {
+  background-color: #555;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Checkbox and Modal Styling (if necessary) */
+.checkbox-group label {
+  color: #fff;
+}
+
+.ant-modal-content {
+  background-color: #2e2e2e;
+  color: #fff;
+}
+
+.ant-modal-header {
+  background-color: #333;
+  border-bottom: 1px solid #444;
+}
+
+.ant-modal-title {
+  color: #fff;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid #444;
+}
+
+.ant-btn-primary {
+  background-color: #0A84FF;
+  border-color: #0A84FF;
+  color: #fff;
+}
+
+.ant-btn-primary:hover {
+  background-color: #005BBB;
+  border-color: #005BBB;
+}
+
+/* Miscellaneous Styles */
+.ant-select-selector {
+  background-color: #2e2e2e !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: #0A84FF !important;
+  color: #fff !important;
+}
+
+.ant-input {
+  background-color: #2e2e2e !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+.ant-input:focus, .ant-input-focused {
+  border-color: #0A84FF !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}

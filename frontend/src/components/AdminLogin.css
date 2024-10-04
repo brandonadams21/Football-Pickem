@@ -1,0 +1,63 @@
+.admin-login-container {
+  background-color: #1e1e1e;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-login-title {
+  color: #ffffff !important;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-login-form {
+  width: 100%;
+}
+
+.admin-login-form .ant-input,
+.admin-login-form .ant-input-password {
+  background-color: #333;
+  color: #ffffff !important;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.admin-login-form .ant-input::placeholder,
+.admin-login-form .ant-input-password::placeholder {
+  color: #bbbbbb; /* Lighter placeholder color for better contrast */
+}
+
+.admin-login-form .ant-input:focus,
+.admin-login-form .ant-input-password:focus {
+  background-color: #444;
+  border-color: #40a9ff; /* Add a blue border when focused */
+  box-shadow: 0 0 5px rgba(64, 169, 255, 0.5);
+}
+
+.admin-login-form .ant-input-password .ant-input-suffix {
+  color: #ffffff !important; /* Change the password toggle icon color */
+}
+
+.admin-login-form .login-button {
+  background-color: #40a9ff;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.admin-login-form .login-button:hover {
+  background-color: #1890ff;
+}
+
+:where(.css-dev-only-do-not-override-ccdg5a).ant-form-item .ant-form-item-label >label {
+  color: #ffffff !important;
+}

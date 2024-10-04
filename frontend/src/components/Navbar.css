@@ -1,0 +1,55 @@
+/* Navbar header */
+.navbar-header {
+    background-color: #121212;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 64px;
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Logo styling */
+  .logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    flex-grow: 1;
+    text-transform: uppercase;
+  }
+  
+  /* Navbar menu */
+  .navbar-menu {
+    background: transparent;
+    border-bottom: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 2;
+  }
+  
+  /* Menu item styling */
+  .navbar-menu .ant-menu-item {
+    color: #e6e6e6;
+    font-size: 16px;
+    padding: 0 20px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Menu item hover effect */
+  .navbar-menu .ant-menu-item:hover {
+    color: #40a9ff;
+    border-bottom: 2px solid #40a9ff;
+    background: transparent;
+  }
+  
+  /* Active menu item (current page) */
+  .navbar-menu .ant-menu-item-selected {
+    color: #40a9ff;
+    border-bottom: 2px solid #40a9ff;
+  }
+  
+  /* Remove outline when clicked */
+  .navbar-menu .ant-menu-item:focus {
+    outline: none;
+  }
+  
