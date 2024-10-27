@@ -27,29 +27,55 @@ const AdminDashboard = () => {
     date: "",
     league: "NFL", // Default to NFL
   });
+  const [currentNFLWeek, setCurrentNFLWeek] = useState(7); // State for NFL week
+  const [currentCFBWeek, setCurrentCFBWeek] = useState(null); // State for College Football week
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("NFL"); // Tab to switch between NFL and CFB
   const navigate = useNavigate();
 
-  const currentNFLWeek = 5; // Current week for NFL
-  const currentCFBWeek = 6; // Current week for College Football
+  // Utility function to check the current week and adjust it if needed
+  const calculateNFLWeek = () => {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDay(); // Sunday = 0, Monday = 1, Tuesday = 2, etc.
+    let nflWeek = 7; // You can adjust this based on when the NFL starts
+
+    // Automatically increment the week if it's Tuesday or later
+    if (currentDay >= 2) {
+      nflWeek += 1; // Increment week by 1 on Tuesday morning or later
+    }
+
+    return nflWeek;
+  };
 
   // Fetch games from ESPN API
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const NFL_API = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
-        const CFB_API = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=100&groups=80";
+        const nflWeekToFetch = calculateNFLWeek(); // Get the dynamically calculated week
+        const NFL_API = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?week=${nflWeekToFetch}`;
+        const CFB_API =
+          "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?limit=100&groups=80";
 
         const nflResponse = await axios.get(NFL_API);
         const cfbResponse = await axios.get(CFB_API);
+
+        console.log("NFL Response:", nflResponse.data);
+        console.log("CFB Response:", cfbResponse.data);
+
+        const nflWeek = nflResponse.data.week.number;
+        const cfbWeek = cfbResponse.data.week.number;
+
+        setCurrentNFLWeek(nflWeek);
+        setCurrentCFBWeek(cfbWeek);
 
         // Parsing NFL games
         const nflGamesParsed = nflResponse.data.events.map((game) => ({
           gameId: game.id,
           homeTeam: game.competitions[0].competitors[0].team.displayName,
           awayTeam: game.competitions[0].competitors[1].team.displayName,
-          spread: game.competitions[0].odds ? game.competitions[0].odds[0].details : "N/A",
+          spread: game.competitions[0].odds
+            ? game.competitions[0].odds[0].details
+            : "N/A",
         }));
 
         // Parsing College Football games
@@ -57,7 +83,9 @@ const AdminDashboard = () => {
           gameId: game.id,
           homeTeam: game.competitions[0].competitors[0].team.displayName,
           awayTeam: game.competitions[0].competitors[1].team.displayName,
-          spread: game.competitions[0].odds ? game.competitions[0].odds[0].details : "N/A",
+          spread: game.competitions[0].odds
+            ? game.competitions[0].odds[0].details
+            : "N/A",
         }));
 
         setNflGames(nflGamesParsed);
@@ -90,9 +118,10 @@ const AdminDashboard = () => {
 
       // Prepare data to send to the backend
       const gamesToStore = selectedGameIds.map((gameId) => {
-        const game = activeTab === "NFL"
-          ? nflGames.find(g => g.gameId === gameId)
-          : collegeGames.find(g => g.gameId === gameId);
+        const game =
+          activeTab === "NFL"
+            ? nflGames.find((g) => g.gameId === gameId)
+            : collegeGames.find((g) => g.gameId === gameId);
 
         return {
           gameId: game.gameId,
@@ -111,7 +140,9 @@ const AdminDashboard = () => {
         league: activeTab,
       });
 
-      message.success(`Games successfully stored for ${activeTab} Week ${week}`);
+      message.success(
+        `Games successfully stored for ${activeTab} Week ${week}`
+      );
     } catch (error) {
       console.error("Error storing games:", error);
       message.error("Error storing games");
@@ -140,7 +171,7 @@ const AdminDashboard = () => {
 
   // Logout function
   const handleLogout = () => {
-    navigate("/admin");
+    navigate("/login");
   };
 
   // Table columns configuration
@@ -174,7 +205,11 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <Title level={2}>Admin Dashboard</Title>
+      <Title style={{ color: "white" }} level={3}>
+        {activeTab === "NFL"
+          ? `NFL Games (Week ${currentNFLWeek || "Loading..."})`
+          : `College Football Games (Week ${currentCFBWeek || "Loading..."})`}
+      </Title>
 
       {/* Button group for switching between NFL and College Football */}
       <Space style={{ marginBottom: "20px" }}>
@@ -183,13 +218,13 @@ const AdminDashboard = () => {
             type={activeTab === "NFL" ? "primary" : "default"}
             onClick={() => setActiveTab("NFL")}
           >
-            NFL (Week {currentNFLWeek})
+            NFL (Week {currentNFLWeek || "Loading..."})
           </Button>
           <Button
             type={activeTab === "CFB" ? "primary" : "default"}
             onClick={() => setActiveTab("CFB")}
           >
-            College Football (Week {currentCFBWeek})
+            College Football (Week {currentCFBWeek || "Loading..."})
           </Button>
         </Button.Group>
 
@@ -220,7 +255,6 @@ const AdminDashboard = () => {
       {/* Conditional rendering based on the selected tab */}
       {activeTab === "NFL" ? (
         <>
-          <Title level={3}>NFL Games (Week {currentNFLWeek})</Title>
           <Table
             dataSource={nflGames}
             rowKey="gameId"
@@ -230,7 +264,6 @@ const AdminDashboard = () => {
         </>
       ) : (
         <>
-          <Title level={3}>College Football Games (Week {currentCFBWeek})</Title>
           <Table
             dataSource={collegeGames}
             rowKey="gameId"
@@ -271,7 +304,7 @@ const AdminDashboard = () => {
         />
         <Input
           name="date"
-          placeholder="Date (e.g. 2024-10-05T14:30:00Z)"
+          placeholder="Date (e.g. 2024-10-07T14:30:00Z)"
           value={manualGame.date}
           onChange={handleInputChange}
           style={{ marginBottom: "10px" }}

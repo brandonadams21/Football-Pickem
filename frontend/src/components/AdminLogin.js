@@ -3,6 +3,7 @@ import { Form, Input, Button, Typography, Alert } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AdminLogin.css'; // Import custom styles if needed
+import { useLoggedIn } from '../context/LoggedInContext'; // Import context
 
 const { Title } = Typography;
 
@@ -12,15 +13,27 @@ const AdminLogin = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const { login } = useLoggedIn(); // Get login function from context
+
   const handleLogin = async () => {
     try {
+      // Make a POST request to login API
       const response = await axios.post('http://localhost:5000/api/admin-auth/login', {
         username,
         password,
       });
 
       if (response.status === 200) {
-        navigate('/admin-dashboard');
+        const user = response.data; // Assuming the response contains the user details including usertype
+        // Call the login function from context to update the state
+        login(user);
+
+        // Redirect based on usertype
+        if (user.usertype === 'admin') {
+          navigate('/admin-dashboard');
+        } else if (user.usertype === 'Member') {
+          navigate('/');
+        }
       }
     } catch (error) {
       setError('Invalid credentials');
@@ -29,7 +42,7 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-container">
-      <Title level={2} className="admin-login-title">Admin Login</Title>
+      <Title level={2} className="admin-login-title">Pick'em Login</Title>
       
       <Form
         name="admin_login"
@@ -38,7 +51,6 @@ const AdminLogin = () => {
         className="admin-login-form"
       >
         <Form.Item
-          style={{color: 'white !important'}}
           label="Username"
           name="username"
           rules={[{ required: true, message: 'Please enter your username!' }]}

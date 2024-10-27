@@ -42,9 +42,6 @@ const fetchScores = async (url, params) => {
             const gameStatus = game.competitions[0].status.type.detail;
             const odds = game.competitions[0].odds ? game.competitions[0].odds[0].details : 'N/A';
     
-            // Log individual game details
-            console.log(`Game: ${homeTeam} vs ${awayTeam}, Status: ${gameStatus}, Odds: ${odds}`);
-    
             return {
                 homeTeam,
                 awayTeam,
@@ -57,9 +54,6 @@ const fetchScores = async (url, params) => {
             };
         });
     
-        // Log the total number of games fetched
-        console.log(`Total games fetched: ${games.length}`);
-    
         return games;
     } catch (error) {
         console.error('Error fetching scores:', error.message);
@@ -67,26 +61,32 @@ const fetchScores = async (url, params) => {
     }
 };
 
+
 // Route for NFL scores
+// Route for NFL scores (with optional week parameter)
 app.get('/api/nfl', async (req, res) => {
-    console.log('Fetching NFL scores');
-    const nflScores = await fetchScores(NFL_API);
+    const week = req.query.week || ''; // If no week is provided, default to current
+    console.log(`Fetching NFL scores for week ${week}`);
+    const params = { week }; // Add the week parameter to the request
+    const nflScores = await fetchScores(NFL_API, params);
     res.json(nflScores);
 });
 
-// Route for College Football scores with dynamic query parameters
+// Route for College Football scores (with optional week parameter)
 app.get('/api/college', async (req, res) => {
-    const limit = req.query.limit || '1000'; // Default limit is 100
+    const week = req.query.week || ''; // Default to current week
+    const limit = req.query.limit || '100'; // Default limit
     const groups = req.query.groups || '80'; // Default group
     const CFB_API = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard';
 
-    // Parameters for the ESPN API
+    // Parameters for the ESPN API, including the week
     const params = {
+        week,
         limit,
-        groups
+        groups,
     };
 
-    console.log('Fetching College Football scores');
+    console.log(`Fetching College Football scores for week ${week}`);
     const collegeScores = await fetchScores(CFB_API, params);
     res.json(collegeScores);
 });

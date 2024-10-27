@@ -52,4 +52,8 @@
   .navbar-menu .ant-menu-item:focus {
     outline: none;
   }
+
+  :where(.css-dev-only-do-not-override-ccdg5a).ant-card .ant-card-body {
+    padding: 0;
+  }
   

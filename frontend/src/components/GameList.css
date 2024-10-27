@@ -1,73 +1,161 @@
 .game-list-container {
-    padding: 20px;
-    background-color: #1e1e1e; /* Dark background */
-  }
-  
-  .game-cards-container {
-    margin-top: 20px;
-  }
-  
-  .game-card {
-    background: #2e2e2e; /* Dark card background */
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid #444; /* Subtle border for dark mode */
-  }
-  
-  .game-card-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .team-box {
-    flex: 1;
-    background-color: #3a3a3a; /* Dark background for team box */
-    border: 2px solid #555; /* Dark border */
-    border-radius: 10px;
-    padding: 15px;
-    margin: 0 10px;
-    position: relative;
-    transition: all 0.3s;
-    color: #ffffff; /* White text color */
-  }
-  
-  .team-box:hover {
-    border-color: #0A84FF; /* Blue hover border for contrast */
-  }
-  
-  .team-box.selected {
-    border-color: #0A84FF;
-    background-color: #0A84FF22; /* Light blue background for selection */
-  }
-  
-  .team-box.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  .team-card {
-    text-align: center;
-  }
-  
-  .team-logo {
-    width: 60px;
-    height: auto;
-  }
-  
-  .team-score {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff; /* White score text */
-  }
-  
-  .spread-info {
-    text-align: center;
-    flex: 0.5;
-    background-color: #3a3a3a; /* Dark background for spread info */
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    color: #ffffff; /* White text for spread info */
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+.login-button,
+.submit-button {
+  margin-bottom: 20px;
+}
+
+.week-selector-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+  padding: 10px;
+}
+
+.week-selector {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.week-selector::-webkit-scrollbar {
+  height: 6px;
+  background-color: #333;
+}
+
+.week-selector::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+.week-button {
+  flex: 0 0 20%;
+  background-color: #2e2e2e;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.week-button:hover {
+  background-color: #3a3a3a;
+}
+
+.week-button.selected {
+  background-color: #1d1f21;
+  border: 2px solid #1a73e8;
+  color: white;
+}
+
+.week-button span {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #2e2e2e;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.scroll-arrow.left {
+  left: 0;
+}
+
+.scroll-arrow.right {
+  right: 0;
+}
+
+.game-card {
+  background-color: #2e2e2e;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.game-date {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-box {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.team-box:hover {
+  background-color: #3a3a3a;
+}
+
+.team-box.selected {
+  background-color: #1a73e8;
+}
+
+.team-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.team-info {
+  flex-grow: 1;
+}
+
+.team-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.team-record {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 0;
+}
+
+.spread {
+  font-weight: bold;
+  margin-left: auto;
+}

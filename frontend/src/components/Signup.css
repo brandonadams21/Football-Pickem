@@ -1,0 +1,119 @@
+/* Signup.css */
+.signup-container {
+  background-color: #1f1f1f; /* Dark background */
+  color: #ffffff; /* Light text for contrast */
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.signup-container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup-title {
+  color: #ffffff !important;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form .ant-form-item-label > label {
+  color: #ffffff;
+}
+
+/* Input styles for dark mode */
+.signup-form .ant-input,
+.signup-form .ant-input-password {
+  background-color: #333333; /* Dark input background */
+  border: 1px solid #444444; /* Slightly lighter border */
+  color: #ffffff; /* Light text */
+  transition: all 0.3s ease;
+}
+
+/* Placeholder text in dark mode */
+.signup-form .ant-input::placeholder,
+.signup-form .ant-input-password::placeholder {
+  color: #aaaaaa; /* Lighter grey for placeholders */
+}
+
+/* Focused input style with custom border color */
+.signup-form .ant-input:focus,
+.signup-form .ant-input-password:focus {
+  border-color: #00bfa5; /* Highlight color for input focus */
+  box-shadow: 0 0 0 2px rgba(0, 191, 165, 0.2); /* Glow effect on focus */
+}
+
+/* Button styling */
+.signup-form .ant-btn-primary {
+  background-color: #00bfa5; /* Primary button color */
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff; /* Button text color */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form .ant-btn-primary:hover {
+  background-color: #009688; /* Slightly darker on hover */
+}
+
+.signup-button {
+  width: 100%; /* Make the button full-width */
+}
+
+/* Alert styles */
+.alert-error {
+  background-color: #ff4d4f; /* Red background for error alerts */
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #52c41a; /* Green background for success alerts */
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .signup-container {
+    margin: 50px auto;
+    padding: 20px; /* Smaller padding for mobile */
+  }
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1f1f1f; /* Dark scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #444444; /* Lighter scrollbar thumb */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555555; /* Even lighter on hover */
+}
